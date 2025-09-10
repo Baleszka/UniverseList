@@ -1,0 +1,12 @@
+{
+    "id": 123123123,
+    "name": "Testlevel",
+    "author": "TestlevelCreator",
+    "creators": ["TestlevelCreator"],
+    "verifier": "TestlevelVerifier",
+    "verification": "https://youtu.be/xvFZjo5PgG0",
+    "percentToQualify": 78,
+    "password": "Free To Copy",
+    "records": [
+    ]
+}
