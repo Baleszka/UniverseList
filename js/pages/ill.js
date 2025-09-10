@@ -4,7 +4,7 @@ import { score } from "../score.js";
 import { fetchillEditors, fetchillList } from "../content.js";
 
 import Spinner from "../components/Spinner.js";
-import LevelAuthors from "../components/List/LevelAuthors.js";
+import LevelAuthors from "../components/List/ILLLevelAuthors.js";
 
 const roleIconMap = {
     owner: "crown",
@@ -39,7 +39,7 @@ export default {
             <div class="level-container">
                 <div class="level" v-if="level">
                     <h1>{{ level.name }}</h1>
-                    <LevelAuthors :author="level.author" :creators="level.creators" :verifier="level.verifier"></LevelAuthors>
+                    <LevelAuthors :author="level.author" :creators="level.creators"></LevelAuthors>
                     <iframe class="video" id="videoframe" :src="video" frameborder="0"></iframe>
                     <ul class="stats">
                         <li>
@@ -57,7 +57,7 @@ export default {
                     </ul>
                     <h2>Records</h2>
                     <p v-if="selected + 1 <= 75"><strong>{{ level.percentToQualify }}%</strong> or better to qualify</p>
-                    <p v-else-if="selected +1 <= 150"><strong>100%</strong> or better to qualify</p>
+                    <p v-else-if="selected + 1 <= 150"><strong>100%</strong> or better to qualify</p>
                     <p v-else>This level does not accept new records.</p>
                     <table class="records">
                         <tr v-for="record in level.records" class="record">
@@ -97,10 +97,14 @@ export default {
                     </template>
                     <h3>Submission Requirements</h3>
                     <p>
-                        Achieved the record without using hacks. Not allowed hacks are greyed and they can be viewed <a href="https://i.imgur.com/1IueUA3.png" target="_blank">here</a>. Other hacks that may not appear on this list are NOT allowed, such as show trajectory.
-                    </p>
+    Achieved the record without using hacks. Not allowed hacks are greyed and they can be viewed
+    <a href="./img.png" target="_blank" style="font-weight: bold; color: #4da3ff;">here</a>.
+    Other hacks that may not appear on this list are NOT allowed, such as show trajectory.
+</p>
+
+
                     <p>
-                        FPS Bypass is allowed up to any FPS without physics bypass. With physics bypass it is only allowed up until 480FPS.
+                        FPS Bypass is allowed up to any FPS without physics bypass. With physics bypass it is only allowed up until 480FPS. ILL levels are an exception from this rule as they may require high FPS with physics bypass.
                     </p>
                     <p>
                         The "Cheat Indicator" option must be turned ON.
@@ -112,10 +116,7 @@ export default {
                         Have either source audio or clicks/taps in the video. Edited audio only does not count
                     </p>
                     <p>
-                        The recording must have a previous attempt and entire death animation shown before the completion, unless the completion is on the first attempt. Everyplay records are exempt from this
-                    </p>
-                    <p>
-                        The recording must also show the player hit the endwall, or the completion will be invalidated.
+                        The recording must have a previous attempt and entire death animation shown before the record, unless the record is on the first attempt. Everyplay records are exempt from this
                     </p>
                     <p>
                         Do not use secret routes or bug routes
@@ -140,24 +141,12 @@ export default {
         level() {
             return this.list[this.selected][0];
         },
-        video() {
-            if (!this.level.showcase) {
-                return embed(this.level.verification);
-            }
-
-            return embed(
-                this.toggledShowcase
-                    ? this.level.showcase
-                    : this.level.verification
-            );
-        },
+        video() { if (!this.level.showcase) { return embed(this.level.verification); } return embed( this.toggledShowcase ? this.level.showcase : this.level.verification ); },
     },
     async mounted() {
-        // Hide loading spinner
         this.list = await fetchillList();
         this.editors = await fetchillEditors();
 
-        // Error handling
         if (!this.list) {
             this.errors = [
                 "Failed to load list. Retry in a few minutes or notify list staff.",

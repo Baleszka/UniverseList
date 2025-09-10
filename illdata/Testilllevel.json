@@ -3,10 +3,15 @@
     "name": "Testilllevel",
     "author": "TestlevelCreator",
     "creators": ["TestlevelCreator"],
-    "verifier": "TestlevelVerifier",
-    "verification": "https://youtu.be/xvFZjo5PgG0",
-    "percentToQualify": 78,
+    "percentToQualify": 1,
+    "verification": "https://youtu.be/-LESRdhHQzw",
     "password": "Free To Copy",
     "records": [
+        {
+            "user": "Sample_progress_1",
+            "link": "https://www.youtube.com/watch?v=MgJeijBGKHU",
+            "percent": 23,
+            "hz": 360
+        }
     ]
 }

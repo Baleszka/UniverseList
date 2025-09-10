@@ -97,8 +97,10 @@ export default {
                     </template>
                     <h3>Submission Requirements</h3>
                     <p>
-                        Achieved the record without using hacks. Not allowed hacks are greyed and they can be viewed <a href="https://i.imgur.com/1IueUA3.png" target="_blank">here</a>. Other hacks that may not appear on this list are NOT allowed, such as show trajectory.
-                    </p>
+    Achieved the record without using hacks. Not allowed hacks are greyed and they can be viewed
+    <a href="./img.png" target="_blank" style="font-weight: bold; color: #4da3ff;">here</a>.
+    Other hacks that may not appear on this list are NOT allowed, such as show trajectory.
+</p>
                     <p>
                         FPS Bypass is allowed up to any FPS without physics bypass. With physics bypass it is only allowed up until 480FPS.
                     </p>
