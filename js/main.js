@@ -11,11 +11,12 @@ export const store = Vue.reactive({
 const app = Vue.createApp({
     data: () => ({ store }),
 });
+
 const router = VueRouter.createRouter({
-    history: VueRouter.createWebHashHistory(),
-    routes,
+  history: VueRouter.createWebHistory(),
+  routes,
 });
 
-app.use(router);
 
+app.use(router);
 app.mount('#app');
